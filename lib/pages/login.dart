@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ieee/helper/task_helper.dart';
-import 'package:flutter_ieee/pages/tasks.dart';
+import 'package:flutter_ieee/helper/schedule_helper.dart';
+import 'package:flutter_ieee/pages/schedules.dart';
 import 'dart:developer' as developer;
 
 class LoginPage extends StatelessWidget {
@@ -65,12 +65,12 @@ class LoginPage extends StatelessWidget {
   }
 
   _saveLogin() {
-    TaskHelper.loginUser(loginController.text).then((Response value){
+    ScheduleHelper.loginUser(loginController.text).then((Response value){
       developer.log(value.toString(), name: "loginUser");
-      TaskHelper.idUser = value.toString();
+      ScheduleHelper.idUser = value.toString();
       Navigator.push(
           _context,
-          MaterialPageRoute(builder: (_context) => TasksPage())
+          MaterialPageRoute(builder: (_context) => SchedulesPage())
       );
     });
   }

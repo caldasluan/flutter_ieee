@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ieee/helper/task_helper.dart';
+import 'package:flutter_ieee/helper/schedule_helper.dart';
 import 'dart:developer' as developer;
 
-class AddTaskPage extends StatelessWidget {
+class AddSchedulePage extends StatelessWidget {
   BuildContext _context;
   final _titleController = new TextEditingController();
   final _descriptionController = new TextEditingController();
@@ -33,7 +33,7 @@ class AddTaskPage extends StatelessWidget {
               ),
             ),
             RaisedButton(
-              onPressed: _saveTask,
+              onPressed: _saveSchedule,
               color: Theme.of(context).primaryColor,
               child: Text(
                 "SALVAR",
@@ -48,12 +48,12 @@ class AddTaskPage extends StatelessWidget {
     );
   }
 
-  _saveTask() {
+  _saveSchedule() {
     String title = _titleController.text;
     String description = _descriptionController.text;
 
-    TaskHelper.newTask(title, description).then((Response value) {
-      developer.log(value.toString(), name: "newTask");
+    ScheduleHelper.newSchedule(title, description).then((Response value) {
+      developer.log(value.toString(), name: "newSchedule");
       Navigator.pop(_context);
     });
   }
